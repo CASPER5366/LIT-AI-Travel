@@ -1,0 +1,84 @@
+{
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "announcement_text": "☠ FREE SHIPPING OVER $100 — DEATH COMES FOR US ALL ☠"
+      }
+    },
+    "hero": {
+      "type": "image-banner",
+      "settings": {
+        "eyebrow": "SS26 COLLECTION",
+        "heading": "FINAL\nNOTICE",
+        "subheading": "Death comes for us all. Dress accordingly.",
+        "cta_primary_label": "SHOP NOW",
+        "cta_primary_url": "/collections/new-arrivals",
+        "cta_secondary_label": "NEW ARRIVALS",
+        "cta_secondary_url": "/collections/new-arrivals"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "text_1": "FINAL NOTICE",
+        "text_2": "DEATH COMES FOR US ALL",
+        "text_3": "NEW ARRIVALS NOW LIVE"
+      }
+    },
+    "collections": {
+      "type": "collection-list",
+      "blocks": {
+        "tops": {
+          "type": "collection",
+          "settings": { "collection": "tops" }
+        },
+        "bottoms": {
+          "type": "collection",
+          "settings": { "collection": "bottoms" }
+        },
+        "outerwear": {
+          "type": "collection",
+          "settings": { "collection": "outerwear" }
+        },
+        "accessories": {
+          "type": "collection",
+          "settings": { "collection": "accessories" }
+        }
+      },
+      "block_order": ["tops", "bottoms", "outerwear", "accessories"],
+      "settings": { "title": "SHOP BY CATEGORY" }
+    },
+    "featured_new": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "NEW ARRIVALS",
+        "collection": "new-arrivals",
+        "products_to_show": 8
+      }
+    },
+    "brand_statement": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "THE BRAND",
+        "heading": "Built for those who know the clock is always running.",
+        "text": "FINAL NOTICE is a gothic streetwear brand rooted in the darker corners of culture. Every piece is a reminder that time is finite. Wear it accordingly.",
+        "cta_label": "OUR STORY",
+        "cta_url": "/pages/about"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "title": "JOIN THE NOTICE",
+        "subtext": "Early access. Exclusive drops. No spam — just the signal."
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": ["announcement", "hero", "marquee", "collections", "featured_new", "brand_statement", "newsletter", "footer"]
+}

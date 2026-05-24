@@ -1,0 +1,31 @@
+{
+  "general": {
+    "title": "FINAL NOTICE",
+    "password_page_html": "This store is not yet open."
+  },
+  "cart": {
+    "title": "YOUR ORDER",
+    "empty": "Your cart is empty.",
+    "add_order_note": "Add a note",
+    "estimated_total": "Estimated total",
+    "checkout": "CHECKOUT"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "ADD TO CART",
+      "sold_out": "SOLD OUT",
+      "unavailable": "UNAVAILABLE",
+      "pick_a_size": "SELECT SIZE",
+      "pick_a_color": "SELECT COLOR",
+      "quantity": "Quantity",
+      "description": "Details",
+      "size_guide": "Size Guide"
+    }
+  },
+  "collections": {
+    "general": {
+      "sort_by": "Sort by",
+      "no_matches": "No products found."
+    }
+  }
+}

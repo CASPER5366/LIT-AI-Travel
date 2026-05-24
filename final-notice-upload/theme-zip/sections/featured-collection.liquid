@@ -1,0 +1,27 @@
+{% assign col = collections[section.settings.collection] %}
+{% if col != blank %}
+<div class="fn-section">
+  <div class="fn-section__header">
+    <h2 class="fn-section__title">{{ section.settings.title | default: col.title | upcase }}</h2>
+    <a href="{{ col.url }}" class="fn-section__link">VIEW ALL</a>
+  </div>
+  <div class="fn-product-grid">
+    {% assign limit = section.settings.products_to_show | default: 8 %}
+    {% for product in col.products limit: limit %}
+      {%- render 'card-product', product: product -%}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Section title" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "products_to_show", "min": 2, "max": 12, "step": 2, "label": "Products to show", "default": 8 }
+  ],
+  "presets": [{ "name": "Featured Collection" }]
+}
+{% endschema %}

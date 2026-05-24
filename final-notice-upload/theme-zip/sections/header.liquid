@@ -1,0 +1,53 @@
+<header class="fn-header" role="banner">
+  <div class="fn-header__inner">
+
+    <a href="/" class="fn-header__logo" aria-label="{{ shop.name }}">
+      {% if section.settings.logo != blank %}
+        <img src="{{ section.settings.logo | image_url: width: 120 }}" alt="{{ shop.name }}" height="36">
+      {% else %}
+        {{ shop.name }}
+      {% endif %}
+    </a>
+
+    <nav aria-label="Main navigation">
+      <ul class="fn-header__nav">
+        {% for link in linklists[section.settings.menu].links %}
+          <li>
+            <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
+              {{ link.title | upcase }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="fn-header__actions">
+      <a href="/cart" class="fn-header__cart-btn" aria-label="Cart ({{ cart.item_count }} items)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        {% if cart.item_count > 0 %}
+          <span class="fn-header__cart-count">{{ cart.item_count }}</span>
+        {% endif %}
+      </a>
+      <button class="fn-header__menu-btn" aria-label="Open menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo image" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

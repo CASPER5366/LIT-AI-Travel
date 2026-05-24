@@ -1,0 +1,20 @@
+{% if section.settings.show_announcement %}
+<div class="fn-announcement" role="status">
+  {% if section.settings.announcement_link != blank %}
+    <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement_text }}</a>
+  {% else %}
+    {{ section.settings.announcement_text }}
+  {% endif %}
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    { "type": "checkbox", "id": "show_announcement", "label": "Show announcement", "default": true },
+    { "type": "text", "id": "announcement_text", "label": "Announcement text", "default": "☠ FREE SHIPPING OVER $100 — DEATH COMES FOR US ALL ☠" },
+    { "type": "url", "id": "announcement_link", "label": "Announcement link" }
+  ]
+}
+{% endschema %}

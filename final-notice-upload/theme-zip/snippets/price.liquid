@@ -1,0 +1,20 @@
+{% comment %}Renders product price. Usage: render 'price', product: product{% endcomment %}
+{%- liquid
+  assign target = product
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price
+  assign price_min = target.price_min
+  assign price_max = target.price_max
+-%}
+<span class="fn-price">
+  {%- if compare_at_price > price -%}
+    <span class="fn-price__compare" style="text-decoration:line-through;opacity:0.4;margin-right:8px;">
+      {{ compare_at_price | money }}
+    </span>
+    <span class="fn-price__sale" style="color:var(--fn-white);">{{ price | money }}</span>
+  {%- elsif price_min != price_max -%}
+    <span class="fn-price__range">{{ price_min | money }} – {{ price_max | money }}</span>
+  {%- else -%}
+    <span>{{ price | money }}</span>
+  {%- endif -%}
+</span>

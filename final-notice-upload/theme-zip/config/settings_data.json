@@ -1,0 +1,24 @@
+{
+  "current": {
+    "colors_solid_button_labels": "#000000",
+    "colors_button_label": "#ffffff",
+    "colors_accent_1": "#ffffff",
+    "colors_accent_2": "#1a1a1a",
+    "colors_text": "#ffffff",
+    "colors_background_1": "#000000",
+    "colors_background_2": "#0d0d0d",
+    "colors_outline_button_labels": "#ffffff",
+    "type_header_font": "bebas_neue_n4",
+    "type_body_font": "space_grotesk_n4",
+    "type_header_base_size": 40,
+    "type_body_font_scale": 100,
+    "page_width": 1400,
+    "spacing_sections": 0,
+    "cart_type": "drawer",
+    "currency_code_enabled": true,
+    "predictive_search_enabled": true,
+    "enable_image_zoom": false,
+    "breadcrumbs": false
+  },
+  "presets": {}
+}
