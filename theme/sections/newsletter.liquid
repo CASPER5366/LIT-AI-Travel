@@ -1,0 +1,31 @@
+<div class="fn-section fn-text-center">
+  <div class="fn-newsletter">
+    <h2 class="fn-newsletter__title">{{ section.settings.title | default: "JOIN THE NOTICE" }}</h2>
+    <p class="fn-newsletter__sub">{{ section.settings.subtext | default: "Early access. Exclusive drops. No spam — just the signal." }}</p>
+    {% form 'customer', id: 'newsletter-form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="fn-newsletter__form">
+        <input
+          class="fn-newsletter__input"
+          type="email"
+          name="contact[email]"
+          id="newsletter-email"
+          placeholder="YOUR EMAIL ADDRESS"
+          required
+          autocomplete="email">
+        <button type="submit" class="fn-newsletter__submit">SUBSCRIBE</button>
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "JOIN THE NOTICE" },
+    { "type": "text", "id": "subtext", "label": "Subtext", "default": "Early access. Exclusive drops. No spam — just the signal." }
+  ],
+  "presets": [{ "name": "Newsletter" }]
+}
+{% endschema %}

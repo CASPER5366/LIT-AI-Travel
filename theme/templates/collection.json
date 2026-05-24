@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "collection_header": {
+      "type": "main-collection-header",
+      "settings": {}
+    },
+    "collection_products": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 24,
+        "image_ratio": "portrait"
+      }
+    }
+  },
+  "order": ["collection_header", "collection_products"]
+}

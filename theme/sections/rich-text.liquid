@@ -1,0 +1,28 @@
+<div class="fn-brand-block">
+  {% if section.settings.eyebrow != blank %}
+    <p class="fn-brand-block__eyebrow">{{ section.settings.eyebrow | upcase }}</p>
+  {% endif %}
+  {% if section.settings.heading != blank %}
+    <h2 class="fn-brand-block__text">{{ section.settings.heading }}</h2>
+  {% endif %}
+  {% if section.settings.text != blank %}
+    <p class="fn-brand-block__sub">{{ section.settings.text }}</p>
+  {% endif %}
+  {% if section.settings.cta_label != blank %}
+    <a href="{{ section.settings.cta_url }}" class="fn-btn">{{ section.settings.cta_label }}</a>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Rich Text",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE BRAND" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Built for those who know the clock is always running." },
+    { "type": "textarea", "id": "text", "label": "Body text", "default": "FINAL NOTICE is a gothic streetwear brand rooted in the darker corners of culture. Every piece is a reminder that time is finite. Wear it accordingly." },
+    { "type": "text", "id": "cta_label", "label": "Button label" },
+    { "type": "url", "id": "cta_url", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Rich Text" }]
+}
+{% endschema %}

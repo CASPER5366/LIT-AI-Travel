@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <title>{{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+  {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+  {{ content_for_header }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  {{ 'final-notice.css' | asset_url | stylesheet_tag }}
+</head>
+<body class="fn-body">
+
+  <a class="skip-to-content" href="#MainContent">Skip to content</a>
+
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+
+  <main id="MainContent" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  <div id="fn-cart-drawer" class="fn-cart-drawer" aria-hidden="true">
+    <div class="fn-cart-drawer__overlay"></div>
+    <div class="fn-cart-drawer__panel">
+      <div class="fn-cart-drawer__header">
+        <span class="fn-cart-drawer__title">YOUR ORDER</span>
+        <button class="fn-cart-drawer__close" aria-label="Close cart">&#215;</button>
+      </div>
+      <div class="fn-cart-drawer__body">
+        <div id="fn-cart-items"></div>
+      </div>
+      <div class="fn-cart-drawer__footer">
+        <a href="/cart" class="fn-btn fn-btn--full">VIEW CART</a>
+        <a href="/checkout" class="fn-btn fn-btn--primary fn-btn--full">CHECKOUT</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.fn-cart-drawer__overlay, .fn-cart-drawer__close').forEach(el => {
+      el.addEventListener('click', () => {
+        document.getElementById('fn-cart-drawer').setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('fn-cart-open');
+      });
+    });
+  </script>
+</body>
+</html>

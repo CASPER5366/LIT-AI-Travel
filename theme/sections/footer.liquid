@@ -1,0 +1,67 @@
+<footer class="fn-footer" role="contentinfo">
+  <div class="fn-footer__grid">
+
+    <div class="fn-footer__brand">
+      <div class="fn-footer__logo">{{ shop.name | upcase }}</div>
+      <p class="fn-footer__tagline">DEATH COMES FOR US ALL</p>
+      <div class="fn-footer__social">
+        {% if section.settings.instagram != blank %}
+          <a href="{{ section.settings.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">INSTAGRAM</a>
+        {% endif %}
+        {% if section.settings.tiktok != blank %}
+          <a href="{{ section.settings.tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">TIKTOK</a>
+        {% endif %}
+        {% if section.settings.twitter != blank %}
+          <a href="{{ section.settings.twitter }}" target="_blank" rel="noopener" aria-label="X / Twitter">X</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div>
+      <p class="fn-footer__col-title">SHOP</p>
+      <ul class="fn-footer__links">
+        <li><a href="/collections/new-arrivals">New Arrivals</a></li>
+        <li><a href="/collections/tops">Tops</a></li>
+        <li><a href="/collections/bottoms">Bottoms</a></li>
+        <li><a href="/collections/outerwear">Outerwear</a></li>
+        <li><a href="/collections/accessories">Accessories</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="fn-footer__col-title">SUPPORT</p>
+      <ul class="fn-footer__links">
+        <li><a href="/pages/sizing">Size Guide</a></li>
+        <li><a href="/pages/shipping">Shipping & Returns</a></li>
+        <li><a href="/pages/faq">FAQ</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="fn-footer__col-title">INFO</p>
+      <ul class="fn-footer__links">
+        <li><a href="/pages/about">About</a></li>
+        <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/pages/terms-of-service">Terms</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="fn-footer__bottom">
+    <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+    <span>{{ shop.enabled_payment_types | payment_type_svg_tag: class: 'fn-payment-icons' }}</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "url", "id": "instagram", "label": "Instagram URL" },
+    { "type": "url", "id": "tiktok", "label": "TikTok URL" },
+    { "type": "url", "id": "twitter", "label": "X / Twitter URL" }
+  ]
+}
+{% endschema %}

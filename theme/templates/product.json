@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main_product": {
+      "type": "main-product",
+      "settings": {
+        "show_vendor": true,
+        "show_sku": false
+      }
+    },
+    "related_products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "YOU MIGHT ALSO LIKE",
+        "products_to_show": 4
+      }
+    }
+  },
+  "order": ["main_product", "related_products"]
+}

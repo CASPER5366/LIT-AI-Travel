@@ -1,0 +1,53 @@
+<section class="fn-hero">
+  {% if section.settings.image != blank %}
+  <div class="fn-hero__media">
+    <img
+      src="{{ section.settings.image | image_url: width: 1800 }}"
+      alt="{{ section.settings.image.alt | default: shop.name }}"
+      loading="eager"
+      fetchpriority="high">
+  </div>
+  <div class="fn-hero__overlay"></div>
+  {% endif %}
+
+  <div class="fn-hero__content">
+    {% if section.settings.eyebrow != blank %}
+      <p class="fn-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <h1 class="fn-hero__title">{{ section.settings.heading }}</h1>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <p class="fn-hero__subtitle">{{ section.settings.subheading }}</p>
+    {% endif %}
+    <div class="fn-hero__ctas">
+      {% if section.settings.cta_primary_label != blank %}
+        <a href="{{ section.settings.cta_primary_url }}" class="fn-btn fn-btn--primary">
+          {{ section.settings.cta_primary_label }}
+        </a>
+      {% endif %}
+      {% if section.settings.cta_secondary_label != blank %}
+        <a href="{{ section.settings.cta_secondary_url }}" class="fn-btn">
+          {{ section.settings.cta_secondary_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image Banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Banner image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "SS26 COLLECTION" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "FINAL NOTICE" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Death comes for us all. Dress accordingly." },
+    { "type": "text", "id": "cta_primary_label", "label": "Primary CTA label", "default": "SHOP NOW" },
+    { "type": "url", "id": "cta_primary_url", "label": "Primary CTA link", "default": "/collections/new-arrivals" },
+    { "type": "text", "id": "cta_secondary_label", "label": "Secondary CTA label", "default": "NEW ARRIVALS" },
+    { "type": "url", "id": "cta_secondary_url", "label": "Secondary CTA link", "default": "/collections/new-arrivals" }
+  ],
+  "presets": [{ "name": "Image Banner" }]
+}
+{% endschema %}

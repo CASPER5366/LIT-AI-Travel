@@ -1,0 +1,26 @@
+<div class="fn-marquee-wrap" aria-hidden="true">
+  <div class="fn-marquee">
+    {% for i in (1..8) %}
+      <span class="fn-marquee__item">
+        {{ section.settings.text_1 }}
+        <span class="fn-marquee__sep">☠</span>
+        {{ section.settings.text_2 }}
+        <span class="fn-marquee__sep">☠</span>
+        {{ section.settings.text_3 }}
+        <span class="fn-marquee__sep">☠</span>
+      </span>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "settings": [
+    { "type": "text", "id": "text_1", "label": "Text 1", "default": "FINAL NOTICE" },
+    { "type": "text", "id": "text_2", "label": "Text 2", "default": "DEATH COMES FOR US ALL" },
+    { "type": "text", "id": "text_3", "label": "Text 3", "default": "NEW ARRIVALS" }
+  ],
+  "presets": [{ "name": "Marquee" }]
+}
+{% endschema %}

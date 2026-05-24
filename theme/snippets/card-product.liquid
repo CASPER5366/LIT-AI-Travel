@@ -1,0 +1,43 @@
+{% comment %}Renders a product card. Usage: render 'card-product', product: product{% endcomment %}
+<article class="fn-product-card">
+  <a href="{{ product.url }}" class="fn-product-card__media" aria-label="{{ product.title }}">
+    {% if product.featured_image %}
+      <img
+        class="fn-product-card__img"
+        src="{{ product.featured_image | image_url: width: 600 }}"
+        alt="{{ product.featured_image.alt | default: product.title }}"
+        loading="lazy"
+        width="600">
+    {% else %}
+      <div class="fn-product-card__img" style="background:var(--fn-grey-mid);display:flex;align-items:center;justify-content:center;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/>
+        </svg>
+      </div>
+    {% endif %}
+    {% if product.tags contains 'new-arrival' %}
+      <span class="fn-product-card__badge">NEW</span>
+    {% endif %}
+    {% if product.tags contains 'bestseller' %}
+      <span class="fn-product-card__badge" style="top:40px;">BEST SELLER</span>
+    {% endif %}
+    <span class="fn-product-card__quick-add">QUICK ADD</span>
+  </a>
+  <div class="fn-product-card__info">
+    <h3 class="fn-product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    <div class="fn-product-card__price">
+      {%- render 'price', product: product -%}
+    </div>
+    {% if product.options contains 'Color' %}
+      <div class="fn-product-card__swatches" aria-label="Available colors">
+        {% for variant in product.variants %}
+          {% if variant.option1 != prev_color %}
+            {% assign prev_color = variant.option1 %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</article>

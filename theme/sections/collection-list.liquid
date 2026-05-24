@@ -1,0 +1,48 @@
+<div class="fn-section">
+  {% if section.settings.title != blank %}
+  <div class="fn-section__header">
+    <h2 class="fn-section__title">{{ section.settings.title | upcase }}</h2>
+    <a href="/collections" class="fn-section__link">VIEW ALL</a>
+  </div>
+  {% endif %}
+  <div class="fn-collection-grid">
+    {% for block in section.blocks %}
+      {% assign col = collections[block.settings.collection] %}
+      {% if col != blank %}
+      <a href="{{ col.url }}" class="fn-collection-card" {{ block.shopify_attributes }}>
+        {% if block.settings.image != blank %}
+          <img class="fn-collection-card__img" src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ col.title }}" loading="lazy">
+        {% elsif col.featured_image %}
+          <img class="fn-collection-card__img" src="{{ col.featured_image | image_url: width: 800 }}" alt="{{ col.title }}" loading="lazy">
+        {% else %}
+          <div class="fn-collection-card__img" style="background:var(--fn-grey-mid);"></div>
+        {% endif %}
+        <div class="fn-collection-card__content">
+          <h3 class="fn-collection-card__title">{{ col.title | upcase }}</h3>
+          <span class="fn-collection-card__link">SHOP NOW</span>
+        </div>
+      </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection List",
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Custom image (optional)" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "title", "label": "Section title", "default": "SHOP BY CATEGORY" }
+  ],
+  "presets": [{ "name": "Collection List" }]
+}
+{% endschema %}
